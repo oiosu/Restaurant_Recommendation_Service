@@ -1,10 +1,10 @@
 import React from "react";
-import Map from "./Components/MapPage/Mapmap.jsx";
+import MapMainComponent from "./Components/MapPage/MapMain";
 
 function App() {
   return (
     <>
-      <Map />
+      <MapMainComponent></MapMainComponent>
     </>
   );
 }

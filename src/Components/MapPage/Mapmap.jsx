@@ -32,70 +32,82 @@ export default function MapComponent() {
 
   return (
     <>
-      <StyledMapContainer>
-        <Map
-          center={{
-            lat: 33.5563,
-            lng: 126.7958,
-          }}
-          style={{
-            width: "100%",
-            height: "300px",
-          }}
-          level={3}
-        >
-          <CustomOverlayMap
-            position={{
-              lat: 33.55635,
-              lng: 126.795841,
+      <MapBody>
+        <StyledMapContainer>
+          <Map
+            center={{
+              lat: 33.5563,
+              lng: 126.7958,
             }}
-            xAnchor={1.1}
-            yAnchor={0.5}
+            style={{
+              width: "100%",
+              height: "300px",
+            }}
+            level={3}
           >
-            <Content />
-          </CustomOverlayMap>
-        </Map>
-      </StyledMapContainer>
+            <CustomOverlayMap
+              position={{
+                lat: 33.55635,
+                lng: 126.795841,
+              }}
+              xAnchor={1.1}
+              yAnchor={0.5}
+            >
+              <Content />
+            </CustomOverlayMap>
+          </Map>
+        </StyledMapContainer>
 
-      <StyledMapContainer>
-        <Roadview
-          position={{
-            lat: 33.5563,
-            lng: 126.7958,
-            radius: 50,
-          }}
-          style={{
-            width: "100%",
-            height: "300px",
-          }}
-          ref={roadviewRef}
-        >
-          <CustomOverlayRoadview
+        <StyledMapContainer>
+          <Roadview
             position={{
-              lat: 33.55635,
-              lng: 126.795841,
+              lat: 33.5563,
+              lng: 126.7958,
+              radius: 50,
             }}
-            xAnchor={0.5}
-            yAnchor={0.5}
-            onCreate={(overlay) => {
-              const roadview = roadviewRef.current;
-              const projection = roadview.getProjection();
-              const viewpoint = projection.viewpointFromCoords(
-                overlay.getPosition(),
-                overlay.getAltitude()
-              );
-              roadview.setViewpoint(viewpoint);
+            style={{
+              width: "100%",
+              height: "300px",
             }}
+            ref={roadviewRef}
           >
-            <Content />
-          </CustomOverlayRoadview>
-        </Roadview>
-      </StyledMapContainer>
+            <CustomOverlayRoadview
+              position={{
+                lat: 33.55635,
+                lng: 126.795841,
+              }}
+              xAnchor={0.5}
+              yAnchor={0.5}
+              onCreate={(overlay) => {
+                const roadview = roadviewRef.current;
+                const projection = roadview.getProjection();
+                const viewpoint = projection.viewpointFromCoords(
+                  overlay.getPosition(),
+                  overlay.getAltitude()
+                );
+                roadview.setViewpoint(viewpoint);
+              }}
+            >
+              <Content />
+            </CustomOverlayRoadview>
+          </Roadview>
+        </StyledMapContainer>
+      </MapBody>
     </>
   );
 }
 
 // Styled components
+const MapBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 900px;
+  height: 650px;
+  margin-left: 375px;
+`;
+
 const StyledMapContainer = styled.div`
   width: 100%;
   height: 300px;

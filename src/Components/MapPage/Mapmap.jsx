@@ -125,7 +125,7 @@ const StyledMapContainer = styled.div`
 
 const OverlayInfo = styled.div`
   &.overlay_info {
-    background-color: #ffbe3c;
+    background-color: #ffd700;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;

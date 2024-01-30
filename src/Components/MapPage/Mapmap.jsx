@@ -30,6 +30,15 @@ export default function MapComponent() {
     </OverlayInfo>
   );
 
+  const RoadContent = () => (
+    <RoadInfo className="roadview_info">
+      <MapName className="map_name">월정리 해수욕장</MapName>
+      <AnotherInfo>
+        <CarInfo className="car_info">주차가능</CarInfo>
+      </AnotherInfo>
+    </RoadInfo>
+  );
+
   return (
     <>
       <MapBody>
@@ -88,7 +97,7 @@ export default function MapComponent() {
                 roadview.setViewpoint(viewpoint);
               }}
             >
-              <Content />
+              <RoadContent />
             </CustomOverlayRoadview>
           </Roadview>
         </StyledMapContainer>
@@ -106,6 +115,7 @@ const MapBody = styled.div`
   width: 900px;
   height: 650px;
   margin-left: 375px;
+  margin-bottom: 300px;
 `;
 
 const StyledMapContainer = styled.div`
@@ -115,20 +125,43 @@ const StyledMapContainer = styled.div`
 
 const OverlayInfo = styled.div`
   &.overlay_info {
-    background-color: #fff;
+    background-color: #ffbe3c;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
+    border-style: none;
     margin-top: 30px;
+  }
+`;
+
+const RoadInfo = styled.div`
+  &.roadview_info {
+    background-color: #f7f4ef;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-style: none;
+    margin-top: 30px;
+
+    .map_name {
+      font-size: 15px;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .walk_inf {
+      // CarInfo 스타일 추가
+    }
   }
 `;
 
 const MapName = styled.strong`
   &.map_name {
-    font-size: 18px;
-    color: #333;
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
   }
 `;
 
@@ -140,12 +173,27 @@ const Desc = styled.div`
 
 const Address = styled.p`
   &.address {
-    color: #555;
+    font-size: 15px;
+    color: #000;
   }
 `;
 
 const Telephone = styled.p`
   &.telephone {
-    color: #555;
+    font-size: 15px;
+    color: #000;
+  }
+`;
+
+const CarInfo = styled.span`
+  &.car_info {
+    font-size: 15px;
+    color: #000;
+  }
+`;
+
+const AnotherInfo = styled.div`
+  &.another_info {
+    // 스타일 추가
   }
 `;

@@ -1,4 +1,4 @@
-![image](https://github.com/oiosu/React-map/assets/99783474/f2ebdc47-b8ac-4ba5-a93b-c97cc34bd577)## React Map
+## React Map
 > 맛집 지도 페이지 구현 담당
 
 ### 1차 구현 

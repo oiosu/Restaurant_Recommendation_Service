@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import MapKeyWord from "./MapKeyword";
 import { FaMapMarkedAlt } from "react-icons/fa";
 
 function MapMainComponent() {
@@ -13,6 +14,7 @@ function MapMainComponent() {
           </StyledMapTitle>
         </div>
       </div>
+      <MapKeyWord />
     </StyledMapMainContainer>
   );
 }

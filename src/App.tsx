@@ -1,13 +1,12 @@
-import React from "react";
-import MapMainPage from "./components/Map/MapMainPage";
-
+// App.js
+import Map from "./components/views/LandingPage/Sections/Map";
 import "./App.css";
 
 function App() {
   return (
-    <>
-      <MapMainPage />
-    </>
+    <div>
+      <Map />
+    </div>
   );
 }
 

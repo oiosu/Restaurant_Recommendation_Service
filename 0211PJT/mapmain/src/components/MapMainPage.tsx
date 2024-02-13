@@ -23,7 +23,9 @@ interface Place {
   phone?: number;
 }
 
+// MapContainer 컴포넌트 정의
 const MapContainer: React.FC = () => {
+  // useState 를 사용하여 맛집 정보 places 와 검색 키워드 searchKeyword 관리
   const [places, setPlaces] = useState<Place[]>([]);
   const [searchKeyword, setSearchKeyword] =
     useState<string>("맛집을 검색해보세요");
@@ -97,7 +99,7 @@ const MapContainer: React.FC = () => {
 
       window.kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:5px; text-align:center; font-size:12px; font-weight:bold;">' +
+          '<div style="text-decoration:none; padding:5px; text-align:center; font-size:12px; font-weight:bold;">' +
             '<a href="https://map.kakao.com/link/map/' +
             place.place_name +
             "," +
@@ -113,7 +115,7 @@ const MapContainer: React.FC = () => {
       });
     }
   }, [searchKeyword]);
-
+  // 검색어가 변경될때마다  handleInputChange 함수를 호출하여 적용하기
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchKeyword(e.target.value);
   };

@@ -71,3 +71,117 @@ import { FaMapLocationDot } from "react-icons/fa6";
     "react-kakao-maps-sdk": "^1.1.26"
 ```
 
+---
+
+
+### 전체 코드 
+
+```typescript
+// MapContainer 컴포넌트 정의
+const MapContainer: React.FC = () => {
+  // useState 를 사용하여 맛집 정보 places 와 검색 키워드 searchKeyword 관리
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [searchKeyword, setSearchKeyword] =
+    useState<string>("맛집을 검색해보세요");
+
+  useEffect(() => {
+    const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+    // const markers = [];
+    const mapOption = {
+      center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
+      level: 3,
+    };
+
+    const map = new window.kakao.maps.Map(
+      document.getElementById("map"),
+      mapOption
+    );
+    const ps = new window.kakao.maps.services.Places();
+
+    ps.keywordSearch(searchKeyword, placesSearchCB);
+
+    function placesSearchCB(data: any[], status: any, pagination: any) {
+      if (status === window.kakao.maps.services.Status.OK) {
+        const bounds = new window.kakao.maps.LatLngBounds();
+        setPlaces(data);
+
+        for (let i = 0; i < data.length; i++) {
+          displayMarker(data[i]);
+          bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
+        }
+
+        map.setBounds(bounds);
+        displayPagination(pagination);
+        setPlaces(data);
+      }
+    }
+
+    function displayPagination(pagination: Pagination): void {
+      const paginationEl = document.getElementById("pagination");
+      const fragment = document.createDocumentFragment();
+
+      while (paginationEl?.hasChildNodes()) {
+        paginationEl.removeChild(paginationEl.lastChild!);
+      }
+
+      for (let i = 1; i <= pagination.last; i++) {
+        const el = document.createElement("a");
+        el.href = "#";
+        el.innerHTML = i.toString();
+
+        if (i === pagination.current) {
+          el.className = "on";
+        } else {
+          el.onclick = (function (pageNumber: number) {
+            return function () {
+              pagination.gotoPage(pageNumber);
+            };
+          })(i);
+        }
+
+        fragment.appendChild(el);
+      }
+
+      paginationEl?.appendChild(fragment);
+    }
+
+    function displayMarker(place: Place) {
+      const marker = new window.kakao.maps.Marker({
+        map: map,
+        position: new window.kakao.maps.LatLng(place.y, place.x),
+      });
+
+      window.kakao.maps.event.addListener(marker, "click", function () {
+        infowindow.setContent(
+          '<div style="text-decoration:none; padding:5px; text-align:center; font-size:12px; font-weight:bold;">' +
+            '<a href="https://map.kakao.com/link/map/' +
+            place.place_name +
+            "," +
+            place.y +
+            "," +
+            place.x +
+            '">' +
+            place.place_name +
+            "</a>" +
+            "</div>"
+        );
+        infowindow.open(map, marker);
+      });
+    }
+  }, [searchKeyword]);
+  // 검색어가 변경될때마다  handleInputChange 함수를 호출하여 적용하기
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchKeyword(e.target.value);
+  };
+
+//...
+
+export default MapContainer;
+```
+
+---
+
+### 화면구현 
+
+![image](https://github.com/oiosu/React-map/assets/99783474/a2da879d-1ed0-4f9f-b895-60aaae684de5)
+

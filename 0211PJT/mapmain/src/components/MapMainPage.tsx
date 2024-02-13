@@ -97,8 +97,16 @@ const MapContainer: React.FC = () => {
 
       window.kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:5px;font-size:12px; font-weight:bold; ">' +
+          '<div style="padding:5px; text-align:center; font-size:12px; font-weight:bold;">' +
+            '<a href="https://map.kakao.com/link/map/' +
             place.place_name +
+            "," +
+            place.y +
+            "," +
+            place.x +
+            '">' +
+            place.place_name +
+            "</a>" +
             "</div>"
         );
         infowindow.open(map, marker);

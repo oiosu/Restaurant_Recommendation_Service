@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaMapLocationDot } from "react-icons/fa6";
+import MapGuide from "./MapGuide";
 declare global {
   interface Window {
     kakao: any;
@@ -96,7 +97,7 @@ const MapContainer: React.FC = () => {
 
       window.kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:5px; font-size:12px; font-weight:bold; ">' +
+          '<div style="padding:5px;font-size:12px; font-weight:bold; ">' +
             place.place_name +
             "</div>"
         );
@@ -117,6 +118,7 @@ const MapContainer: React.FC = () => {
         </StyledMapLocationDot>
         <StyledMapTitle>
           <span>또간지도</span>
+          <MapGuide />
         </StyledMapTitle>
 
         <StyledInput

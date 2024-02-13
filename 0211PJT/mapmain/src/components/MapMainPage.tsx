@@ -18,7 +18,7 @@ interface Place {
   y: number;
   place_name: string;
   road_address_name?: string;
-  address_name?: string;
+  // address_name?: string;
   phone?: number;
 }
 
@@ -34,6 +34,7 @@ const MapContainer: React.FC = () => {
       center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
       level: 3,
     };
+
     const map = new window.kakao.maps.Map(
       document.getElementById("map"),
       mapOption
@@ -95,7 +96,7 @@ const MapContainer: React.FC = () => {
 
       window.kakao.maps.event.addListener(marker, "click", function () {
         infowindow.setContent(
-          '<div style="padding:5px;font-size:12px; font-weight:bold; ">' +
+          '<div style="padding:5px; font-size:12px; font-weight:bold; ">' +
             place.place_name +
             "</div>"
         );
@@ -131,24 +132,25 @@ const MapContainer: React.FC = () => {
           <div id="result-list">
             {places.map((place, index) => (
               <div key={index} style={{ marginTop: "20px" }}>
-                <span>{index + 1}</span>
-                <div>
-                  <h5>{place.place_name}</h5>
+                {/* <span>{index + 1}</span> */}
+                <Info>
+                  <p className="place_name">🍴{place.place_name}</p>
                   {place.road_address_name ? (
                     <div>
-                      <span>{place.road_address_name}</span>
-                      <span>{place.address_name}</span>
+                      <p className="place_address">{place.road_address_name}</p>
                     </div>
                   ) : (
-                    <span>{place.address_name}</span>
+                    <p>{place.road_address_name}</p>
                   )}
-                  <span>{place.phone}</span>
-                </div>
+                  <p className="place_phone">{place.phone}</p>
+                </Info>
               </div>
             ))}
-            <div id="pagination"></div>
           </div>
         </StyledList>
+        <StyledPagination>
+          <div id="pagination"></div>
+        </StyledPagination>
       </StyledMapMainContainer>
     </div>
   );
@@ -156,18 +158,74 @@ const MapContainer: React.FC = () => {
 
 export default MapContainer;
 
-const StyledList = styled.ul`
+const StyledPagination = styled.div`
+  font-size: 20px;
+  margin-top: -80px;
+  margin-bottom: 70px;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #feaa00;
+    margin-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+`;
+
+const StyledList = styled.div`
+  text-align: start;
+
   margin-top: 20px;
   margin-bottom: 150px;
   list-style: none;
   width: 1200px;
-  background-color: beige;
+  span {
+    margin-left: 30px;
+    font-weight: bold;
+    background-color: #feaa00;
+    color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 30px;
+  }
 
   li {
     padding-top: 10px;
     padding-bottom: 10px;
     height: 30px;
     list-style: none;
+  }
+`;
+const Info = styled.div`
+  margin-left: 30px;
+
+  background-color: #f7f4ef;
+  margin-bottom: 40px;
+  border-radius: 30px;
+
+  .place_name {
+    font-weight: bold;
+    font-size: 18px;
+    padding-top: 20px;
+  }
+  .place_address {
+    font-weight: 600;
+  }
+  .place_phone {
+    padding-bottom: 20px;
+    font-weight: 600;
+  }
+
+  p {
+    margin-left: 30px;
+    padding-top: 5px;
+    padding-bottom: 10px;
   }
 `;
 

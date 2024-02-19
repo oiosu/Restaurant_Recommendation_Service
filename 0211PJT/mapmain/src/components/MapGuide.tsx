@@ -20,6 +20,7 @@ const MapGuideContainer = styled.div`
     color: #feaa00;
     font-weight: bold;
     border-style: solid;
+    border-color: #feaa00;
     border-radius: 30px;
     margin: 20px;
     margin-bottom: 0;

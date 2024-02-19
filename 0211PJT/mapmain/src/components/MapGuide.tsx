@@ -14,4 +14,14 @@ export default class MapGuide extends React.Component {
 
 const MapGuideContainer = styled.div`
   /* 여기에 스타일을 추가하세요 */
+  button {
+    padding: 10px;
+    background-color: #fff;
+    color: #feaa00;
+    font-weight: bold;
+    border-style: solid;
+    border-radius: 30px;
+    margin: 20px;
+    margin-bottom: 0;
+  }
 `;

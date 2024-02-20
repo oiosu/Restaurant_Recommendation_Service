@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaMapLocationDot } from "react-icons/fa6";
 import MapGuide from "./MapGuide";
+
 declare global {
   interface Window {
     kakao: any;

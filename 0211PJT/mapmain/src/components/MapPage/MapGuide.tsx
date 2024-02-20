@@ -24,8 +24,8 @@ export default class MapGuide extends Component<{}, MapGuideState> {
   render() {
     return (
       <MapGuideContainer>
-        <button onClick={this.openModal}>지도검색방법</button>
-        <button>맛집제보방법</button>
+        <button onClick={this.openModal}>지도검색TIP</button>
+        {/* <button>맛집제보방법</button> */}
 
         {this.state.isModalOpen && (
           <Modal>
@@ -53,6 +53,8 @@ const MapGuideContainer = styled.div`
     border-radius: 30px;
     margin: 20px;
     margin-bottom: 0;
+    width: 300px;
+    margin-left: 40px;
   }
 `;
 

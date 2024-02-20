@@ -29,9 +29,10 @@ export default class MapGuide extends Component<{}, MapGuideState> {
 
         {this.state.isModalOpen && (
           <Modal>
-            {/* 모달 내용 */}
             <div>
-              <p>지도검색 방법 내용</p>
+              <p className="search_title">이렇게 검색해보세요!</p>
+              <p>가고싶은 도시명 + 분위기 + 맛집</p>
+              <p> ex : 광화문 데이트 맛집</p>
               <button onClick={this.closeModal}>닫기</button>
             </div>
           </Modal>
@@ -71,5 +72,16 @@ const Modal = styled.div`
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
+    width: 500px;
+    height: 308px;
+  }
+
+  .search_title {
+    background-color: #feaa00;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 30px;
+    padding: 10px;
   }
 `;

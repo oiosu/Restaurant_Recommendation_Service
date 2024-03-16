@@ -102,6 +102,32 @@ import { FaMapLocationDot } from "react-icons/fa6";
 ### 전체 코드 
 
 ```typescript
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { FaMapLocationDot } from "react-icons/fa6";
+import MapGuide from "./MapGuide";
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
+
+interface Pagination {
+  last: number;
+  current: number;
+  gotoPage: (pageNumber: number) => void;
+}
+
+interface Place {
+  x: number;
+  y: number;
+  place_name: string;
+  road_address_name?: string;
+  // address_name?: string;
+  phone?: number;
+}
+
 // MapContainer 컴포넌트 정의
 const MapContainer: React.FC = () => {
   // useState 를 사용하여 맛집 정보 places 와 검색 키워드 searchKeyword 관리
@@ -199,14 +225,56 @@ const MapContainer: React.FC = () => {
     setSearchKeyword(e.target.value);
   };
 
-//...
+  return (
+    <div>
+      <StyledMapMainContainer>
+        <StyledMapLocationDot>
+          <FaMapLocationDot />
+        </StyledMapLocationDot>
+        <StyledMapTitle>
+          <span>또간지도</span>
+          <MapGuide />
+        </StyledMapTitle>
+
+        <StyledInput
+          type="text"
+          value={searchKeyword}
+          onChange={handleInputChange}
+          placeholder="맛집을 검색해보세요"
+        />
+        <StyledMap id="map">
+          <div></div>
+        </StyledMap>
+        <StyledList>
+          <div id="result-list">
+            {places.map((place, index) => (
+              <div key={index} style={{ marginTop: "20px" }}>
+                {/* <span>{index + 1}</span> */}
+                <Info>
+                  <p className="place_name">🍴{place.place_name}</p>
+                  {place.road_address_name ? (
+                    <div>
+                      <p className="place_address">{place.road_address_name}</p>
+                    </div>
+                  ) : (
+                    <p>{place.road_address_name}</p>
+                  )}
+                  <p className="place_phone">{place.phone}</p>
+                </Info>
+              </div>
+            ))}
+          </div>
+        </StyledList>
+        <StyledPagination>
+          <div id="pagination"></div>
+        </StyledPagination>
+      </StyledMapMainContainer>
+    </div>
+  );
+};
 
 export default MapContainer;
 ```
 
 ---
-
-### 화면구현 
-
-![image](https://github.com/oiosu/React-map/assets/99783474/a2da879d-1ed0-4f9f-b895-60aaae684de5)
 

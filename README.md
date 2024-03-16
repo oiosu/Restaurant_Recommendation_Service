@@ -1,3 +1,27 @@
+# 🍴 또간지도 ( 맛집 소개 서비스) 
+
+> * 프로젝트 기간 : 2024/01 ~ 2024/02
+> * 프로젝트 인원 : 프론트엔드 5명, 벡엔드 9명 
+
+---
+### ✅ [프로젝트 프론트엔드 Github](https://github.com/SupercodingProject-3th/FRONT-END) 
+---
+
+#### ✅ 목표 및 소개 
+
+* Kakao Map API를 활용하여 '키워드로 장소 검색하고 목록으로 표출하기' 기능을 구현
+* useState 를 사용하여 맛집 정보와 검색 키워드를 관리
+* useEffect를 이용하여 검색어가 변경될 때 마다 지도를 갱신하고 맛집 정보 관리
+* 검색 결과를 지도에 표시하고 페이지네이션을 구현
+* 검색어를 입력이 발생할때마다 handleInputChange 함수를 호출하여 검색 키워드 업데이트
+* JSX를 통해 UI를 렌더링 하고 스타일링은 styled-components를 이용하여 적용  
+
+![image](https://github.com/oiosu/React-map/assets/99783474/99b5f019-2758-47ab-a9d0-eecca17f4ef8)
+
+
+
+
+
 # 🍴 Map Main Page
 
 ## 키워드로 장소검색하고 목록으로 표출하기

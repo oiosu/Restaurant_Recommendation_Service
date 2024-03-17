@@ -3,9 +3,27 @@
 > * 프로젝트 기간 : 2024/01 ~ 2024/02
 > * 프로젝트 인원 : 프론트엔드 5명, 벡엔드 9명 
 
+#### ✅ 목표 및 소개 ( 프론트엔드 지도 페이지 담당 ) 
+
+* Kakao Map API를 활용하여 '키워드로 장소 검색하고 목록으로 표출하기' 기능을 구현
+* useState 를 사용하여 맛집 정보와 검색 키워드를 관리
+* useEffect를 이용하여 검색어가 변경될 때 마다 지도를 갱신하고 맛집 정보 관리
+* 검색 결과를 지도에 표시하고 페이지네이션을 구현
+* 검색어를 입력이 발생할때마다 handleInputChange 함수를 호출하여 검색 키워드 업데이트
+* JSX를 통해 UI를 렌더링 하고 스타일링은 styled-components를 이용하여 적용  
 ---
+
 ### ✅ [프로젝트 프론트엔드 Github](https://github.com/SupercodingProject-3th/FRONT-END) 
+### ✅ [프로젝트 벡앤드 Github](https://github.com/supercoding-3st-project/food-place-BE)
+
 ---
+
+> `0211PJT` 프로젝트 개인 폴더 생성하여 미리 테스트 후 프론트엔드 프로젝트에 옮긴 후 다시 테스트 해보는 작업 진행
+>
+> SuperCoding PJT03 Figma
+>
+> ![image](https://github.com/oiosu/React-map/assets/99783474/8f62a943-1496-4eb4-8fc2-c4102e90196b)
+
 
 ```bash
 $ npm install typescript @types/node @types/react @types/react-dom @types/jest
